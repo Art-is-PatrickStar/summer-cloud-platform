@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.wsw.cloud</groupId>
+        <artifactId>summer-cloud-platform</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>summer-cloud-user-service</artifactId>
+    <packaging>pom</packaging>
+
+    <name>summer-cloud-user-service</name>
+    <description>summer-cloud-user-service</description>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <modules>
+        <module>summer-cloud-user-service-application</module>
+        <module>summer-cloud-user-service-domain</module>
+        <module>summer-cloud-user-service-interface</module>
+        <module>summer-cloud-user-service-infrastructure</module>
+        <module>summer-cloud-user-service-starter</module>
+    </modules>
+
+</project>
