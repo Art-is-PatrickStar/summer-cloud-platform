@@ -1,0 +1,13 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: summer-cloud-ai-service-mcp-server
+
+  ai:
+    mcp:
+      server:
+        name: "mcp-server-weather"
+        version: "1.0.0"
+        #stdio: true

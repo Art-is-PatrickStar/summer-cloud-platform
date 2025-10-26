@@ -1,0 +1,44 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: summer-cloud-ai-service-chat
+
+  ai:
+    # qwen模型 符合openai规范
+    openai:
+      api-key: sk-d5545212d63d46a5ba3ae5804c5760c3
+      chat:
+        base-url: https://dashscope.aliyuncs.com/compatible-mode
+        completions-path: /v1/chat/completions
+        options:
+          model: qwen3-max
+
+    # ollama本地模型
+    ollama:
+      base-url: http://127.0.0.1:11434
+      chat:
+        model: qwen3:8b
+        options:
+          temperature: 0.7
+
+    # mcp
+    mcp:
+      client:
+        enabled: true
+        name: my-mcp-client
+        version: 1.0.0
+        request-timeout: 60s
+        type: SYNC  # or ASYNC for reactive applications
+        toolcallback:
+          enabled: true
+        # sse
+#        sse:
+#          connections:
+#            # MCP Server名称
+#            mcp-server-weather:
+#              url: http://localhost:8082
+        # stdio
+        stdio:
+          servers-configuration: classpath:/mcp-servers-config.json
