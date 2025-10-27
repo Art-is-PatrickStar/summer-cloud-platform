@@ -25,7 +25,7 @@
     <modules>
         <module>summer-cloud-user-service-application</module>
         <module>summer-cloud-user-service-domain</module>
-        <module>summer-cloud-user-service-interface</module>
+        <module>summer-cloud-user-service-interfaces</module>
         <module>summer-cloud-user-service-infrastructure</module>
         <module>summer-cloud-user-service-starter</module>
     </modules>

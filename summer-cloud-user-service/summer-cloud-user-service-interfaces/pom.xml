@@ -6,12 +6,11 @@
 
     <parent>
         <groupId>com.wsw.cloud</groupId>
-        <artifactId>summer-cloud-platform</artifactId>
+        <artifactId>summer-cloud-user-service</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <artifactId>summer-cloud-product-service</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>summer-cloud-user-service-interfaces</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -19,12 +18,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <modules>
-        <module>summer-cloud-product-service-application</module>
-        <module>summer-cloud-product-service-domain</module>
-        <module>summer-cloud-product-service-infrastructure</module>
-        <module>summer-cloud-product-service-interfaces</module>
-        <module>summer-cloud-product-service-starter</module>
-    </modules>
+    <dependencies>
+
+    </dependencies>
 
 </project>
