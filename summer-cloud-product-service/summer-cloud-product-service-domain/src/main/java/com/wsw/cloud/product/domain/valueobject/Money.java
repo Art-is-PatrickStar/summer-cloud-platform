@@ -1,4 +1,4 @@
-package com.wsw.cloud.product.domain.model.value;
+package com.wsw.cloud.product.domain.valueobject;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

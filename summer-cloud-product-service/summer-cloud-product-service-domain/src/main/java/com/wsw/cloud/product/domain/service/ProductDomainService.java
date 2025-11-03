@@ -1,6 +1,6 @@
 package com.wsw.cloud.product.domain.service;
 
-import com.wsw.cloud.product.domain.model.Product;
+import com.wsw.cloud.product.domain.aggregate.Product;
 import com.wsw.cloud.product.domain.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 

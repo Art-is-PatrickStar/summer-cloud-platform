@@ -1,7 +1,7 @@
 package com.wsw.cloud.product.infrastructure.persistence.converter;
 
-import com.wsw.cloud.product.domain.model.Product;
-import com.wsw.cloud.product.domain.model.value.Money;
+import com.wsw.cloud.product.domain.aggregate.Product;
+import com.wsw.cloud.product.domain.valueobject.Money;
 import com.wsw.cloud.product.infrastructure.persistence.entity.ProductDO;
 import org.springframework.beans.BeanUtils;
 

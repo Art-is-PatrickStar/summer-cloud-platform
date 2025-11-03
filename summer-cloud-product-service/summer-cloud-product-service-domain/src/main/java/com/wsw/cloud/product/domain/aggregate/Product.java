@@ -1,6 +1,6 @@
-package com.wsw.cloud.product.domain.model;
+package com.wsw.cloud.product.domain.aggregate;
 
-import com.wsw.cloud.product.domain.model.value.Money;
+import com.wsw.cloud.product.domain.valueobject.Money;
 import lombok.Builder;
 import lombok.Data;
 

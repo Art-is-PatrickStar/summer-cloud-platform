@@ -1,7 +1,7 @@
 package com.wsw.cloud.product.application.converter;
 
 import com.wsw.cloud.product.application.dto.ProductDTO;
-import com.wsw.cloud.product.domain.model.Product;
+import com.wsw.cloud.product.domain.aggregate.Product;
 
 import java.util.ArrayList;
 import java.util.List;

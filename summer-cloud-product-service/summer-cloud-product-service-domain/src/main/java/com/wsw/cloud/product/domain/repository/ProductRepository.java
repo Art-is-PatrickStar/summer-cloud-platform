@@ -1,6 +1,6 @@
 package com.wsw.cloud.product.domain.repository;
 
-import com.wsw.cloud.product.domain.model.Product;
+import com.wsw.cloud.product.domain.aggregate.Product;
 import com.wsw.cloud.product.domain.repository.pagination.PageResult;
 
 import java.util.List;

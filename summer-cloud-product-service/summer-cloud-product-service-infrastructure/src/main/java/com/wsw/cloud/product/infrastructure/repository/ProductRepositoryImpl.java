@@ -2,7 +2,7 @@ package com.wsw.cloud.product.infrastructure.repository;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.wsw.cloud.product.domain.model.Product;
+import com.wsw.cloud.product.domain.aggregate.Product;
 import com.wsw.cloud.product.domain.repository.ProductRepository;
 import com.wsw.cloud.product.domain.repository.pagination.PageResult;
 import com.wsw.cloud.product.infrastructure.persistence.converter.ProductConverter;
