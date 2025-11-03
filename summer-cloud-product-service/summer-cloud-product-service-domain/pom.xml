@@ -16,9 +16,6 @@
     <description>Domain层（领域层）：纯领域模型，包含聚合根、实体、值对象、领域服务</description>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>

@@ -28,19 +28,15 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
-        <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
-        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
-        <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
-        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
-        <maven-dependency-plugin.version>3.6.0</maven-dependency-plugin.version>
 
         <spring-boot.version>3.5.6</spring-boot.version>
         <spring-ai.version>1.0.3</spring-ai.version>
 
-        <lombok.version>1.18.28</lombok.version>
-        <mysql.version>8.0.33</mysql.version>
-        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
+        <lombok.version>1.18.42</lombok.version>
+        <mysql.version>9.5.0</mysql.version>
+        <mybatis-plus-spring-boot3.version>3.5.14</mybatis-plus-spring-boot3.version>
+        <mybatis-plus-jsqlparser.version>3.5.14</mybatis-plus-jsqlparser.version>
+<!--        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>-->
         <dynamic-datasource.version>3.6.1</dynamic-datasource.version>
         <commons-pool2.version>2.11.1</commons-pool2.version>
         <redisson.version>3.22.0</redisson.version>
@@ -50,7 +46,7 @@
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
         <guava.version>32.0.1-jre</guava.version>
         <groovy.version>4.0.12</groovy.version>
-        <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <mapstruct.version>1.6.3</mapstruct.version>
         <lombok-mapstruct.version>0.2.0</lombok-mapstruct.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-collections4.version>4.4</commons-collections4.version>
@@ -100,20 +96,30 @@
                 <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
                 <version>${dynamic-datasource.version}</version>
             </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.baomidou</groupId>-->
+<!--                <artifactId>mybatis-plus-boot-starter</artifactId>-->
+<!--                <version>${mybatis-plus.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>com.baomidou</groupId>-->
+<!--                <artifactId>mybatis-plus-extension</artifactId>-->
+<!--                <version>${mybatis-plus.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>com.baomidou</groupId>-->
+<!--                <artifactId>mybatis-plus-core</artifactId>-->
+<!--                <version>${mybatis-plus.version}</version>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus.version}</version>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus-spring-boot3.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-extension</artifactId>
-                <version>${mybatis-plus.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-core</artifactId>
-                <version>${mybatis-plus.version}</version>
+                <artifactId>mybatis-plus-jsqlparser</artifactId>
+                <version>${mybatis-plus-jsqlparser.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
