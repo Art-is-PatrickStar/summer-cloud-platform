@@ -8,6 +8,7 @@ spring:
   ai:
     mcp:
       server:
-        name: "mcp-server-weather"
-        version: "1.0.0"
-        #stdio: true
+        enabled: true
+        name: mcp-server-weather
+        version: 1.0.0
+        type: SYNC # SYNC表示同步调用 ASYNC表示异步调用

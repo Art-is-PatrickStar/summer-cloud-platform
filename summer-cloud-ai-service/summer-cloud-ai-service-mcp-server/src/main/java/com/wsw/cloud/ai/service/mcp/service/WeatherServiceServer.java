@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class WeatherServiceServer {
 
-    @Tool(name = "getCurrentWeather", description = "查询指定城市的天气")
-    public String getCurrentWeather(@ToolParam(description = "城市名称") String city) {
-        System.out.println("城市名称：" + city);
+    @Tool(name = "getCurrentWeather", description = "获取指定位置天气，如果只有位置信息则根据位置自动推算经纬度")
+    public String getCurrentWeather(@ToolParam(description = "经度") double longitude,
+                                    @ToolParam(description = "纬度") double latitude) {
         return "天气晴朗";
     }
 

@@ -29,6 +29,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     public Product save(Product product) {
         ProductDO productDO = ProductConverter.toDO(product);
         if (product.getId() == null) {
+            productDO.setId(System.currentTimeMillis());
             productMapper.insert(productDO);
             product.setId(productDO.getId());
         } else {
