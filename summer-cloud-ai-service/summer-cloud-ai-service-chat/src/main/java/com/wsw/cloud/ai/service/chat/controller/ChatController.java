@@ -7,10 +7,18 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
+import org.springframework.ai.document.Document;
+import org.springframework.ai.reader.tika.TikaDocumentReader;
+import org.springframework.ai.transformer.splitter.TokenTextSplitter;
+import org.springframework.ai.vectorstore.SearchRequest;
+import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @Author wangsongwen
@@ -25,6 +33,12 @@ public class ChatController {
     @Resource(name = "openAIChatClient")
     //@Resource(name = "ollamaChatClient")
     private ChatClient chatClient;
+
+    @Resource
+    private VectorStore vectorStore;
+
+    @Value("classpath:/file/茅台公告.pdf")
+    private org.springframework.core.io.Resource resource;
 
     @GetMapping("/genarate")
     public String genarate(@RequestParam(value = "message", defaultValue = "给我讲个笑话") String message) {
@@ -87,6 +101,56 @@ public class ChatController {
         log.info("收货信息：{}", JSON.toJSONString(address));
 
         return address;
+    }
+
+    @GetMapping("/testEntityList")
+    public List<Address> testEntityList(@RequestParam(value = "message", defaultValue = "随机生成五份信息") String message) {
+        return chatClient
+                .prompt()
+                .user(message)
+                .call()
+                .entity(new ParameterizedTypeReference<List<Address>>() {
+                });
+    }
+
+    @GetMapping("/testVectorStoreSearch")
+    public String testVectorStoreSearch() {
+//        List<Document> documents = List.of(
+//                new Document("Spring AI rocks!! Spring AI rocks!! Spring AI rocks!! Spring AI rocks!! Spring AI rocks!!", Map.of("meta1", "meta1")),
+//                new Document("The World is Big and Salvation Lurks Around the Corner"),
+//                new Document("You walk forward facing the past and you turn back toward the future.", Map.of("meta2", "meta2")));
+//
+//        // Add the documents to Elasticsearch
+//        vectorStore.add(documents);
+
+        // Retrieve documents similar to a query
+        List<Document> results = this.vectorStore.similaritySearch(SearchRequest.builder().query("Spring").topK(5).build());
+
+        log.info("results: {}", JSON.toJSONString(results));
+
+        return "ok";
+    }
+
+    @GetMapping("/loadDocument")
+    public String loadDocument() {
+        // 读取
+        TikaDocumentReader tikaDocumentReader = new TikaDocumentReader(this.resource);
+        List<Document> documentList = tikaDocumentReader.read();
+        for (Document document : documentList) {
+            log.info("document: {}", document.getText());
+        }
+
+        // 分割
+        TokenTextSplitter tokenTextSplitter = new TokenTextSplitter();
+        List<Document> splitDocumentList = tokenTextSplitter.apply(documentList);
+        for (Document document : splitDocumentList) {
+            log.info("splitDocument: {}", document.getText());
+        }
+
+        // 存储
+        vectorStore.add(splitDocumentList);
+
+        return "ok";
     }
 
 }

@@ -52,7 +52,7 @@
         <commons-collections4.version>4.4</commons-collections4.version>
         <fastjson.version>2.0.60</fastjson.version>
         <caffeine.version>3.1.6</caffeine.version>
-        <es.version>8.8.1</es.version>
+<!--        <es.version>8.13.3</es.version>-->
         <jackson.version>2.15.2</jackson.version>
         <jakarta-json.version>2.0.1</jakarta-json.version>
         <springdoc.version>2.1.0</springdoc.version>
@@ -217,16 +217,16 @@
                 <artifactId>jakarta.json</artifactId>
                 <version>${jakarta-json.version}</version>
             </dependency>
-            <dependency>
-                <groupId>co.elastic.clients</groupId>
-                <artifactId>elasticsearch-java</artifactId>
-                <version>${es.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.elasticsearch.client</groupId>
-                <artifactId>elasticsearch-rest-client</artifactId>
-                <version>${es.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>co.elastic.clients</groupId>-->
+<!--                <artifactId>elasticsearch-java</artifactId>-->
+<!--                <version>${es.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.elasticsearch.client</groupId>-->
+<!--                <artifactId>elasticsearch-rest-client</artifactId>-->
+<!--                <version>${es.version}</version>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>

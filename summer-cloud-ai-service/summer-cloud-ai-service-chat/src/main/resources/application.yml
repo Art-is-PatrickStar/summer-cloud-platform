@@ -5,6 +5,11 @@ spring:
   application:
     name: summer-cloud-ai-service-chat
 
+  elasticsearch:
+    uris: http://localhost:9200
+    username:
+    password:
+
   data:
     redis:
       host: 127.0.0.1
@@ -72,6 +77,14 @@ spring:
             initialize-schema: always
             schema: classpath:/sql/schema-mysql.sql
 
+    # 向量数据库
+    vectorstore:
+      elasticsearch:
+        initialize-schema: true
+        index-name: custom-index-1
+        dimensions: 1024
+        similarity: cosine
+
     # mcp
     mcp:
       client:
@@ -101,3 +114,13 @@ logging:
             client:
               advisor:
                 SimpleLoggerAdvisor: debug
+
+# 可观测性配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

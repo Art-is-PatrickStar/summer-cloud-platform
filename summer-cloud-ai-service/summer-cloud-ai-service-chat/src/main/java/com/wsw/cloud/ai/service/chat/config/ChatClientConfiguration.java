@@ -1,18 +1,18 @@
 package com.wsw.cloud.ai.service.chat.config;
 
-import com.wsw.cloud.ai.service.chat.advisors.ReReadingAdvisor;
 import com.wsw.cloud.ai.service.chat.tools.TradeTools;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
-import org.springframework.ai.chat.client.advisor.PromptChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
+import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
-import org.springframework.ai.chat.memory.ChatMemoryRepository;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.tool.ToolCallbackProvider;
+import org.springframework.ai.vectorstore.SearchRequest;
+import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -40,6 +40,7 @@ public class ChatClientConfiguration {
     @Bean
     public ChatClient openAIChatClient(OpenAiChatModel openAiChatModel,
                                        ChatMemory chatMemory,
+                                       VectorStore vectorStore,
                                        TradeTools tradeTools,
                                        ToolCallbackProvider toolCallbackProvider) {
         return ChatClient.builder(openAiChatModel)
@@ -52,10 +53,16 @@ public class ChatClientConfiguration {
                         // 日志打印
                         new SimpleLoggerAdvisor(),
                         // 敏感词
-                        new SafeGuardAdvisor(List.of("将军"))
+                        new SafeGuardAdvisor(List.of("将军")),
                         // 自定义拦截器
                         //new ReReadingAdvisor()
                         // rag检索
+                        QuestionAnswerAdvisor.builder(vectorStore)
+                                .searchRequest(SearchRequest.builder()
+                                        .topK(5)
+                                        .similarityThreshold(0.5)
+                                        .build())
+                                .build()
                 )
                 // mcp
                 .defaultToolCallbacks(toolCallbackProvider)
